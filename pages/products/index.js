@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../../styles/products.module.css";
 
 const ImagePage = () => {
   const handleOnSubmit = async (event) => {
