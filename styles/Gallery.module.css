@@ -1,0 +1,17 @@
+.ul {
+  list-style-type: none;
+}
+
+.grid {
+  display: grid;
+  max-width: 60rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: masonry;
+}
+
+.image {
+  display: inline-block;
+  width: 300px;
+  height: auto;
+}
+

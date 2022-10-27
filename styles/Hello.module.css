@@ -1,0 +1,49 @@
+.container {
+  height: 100vh;
+  background: var(--light);
+  animation: fadeAway 4s;
+  position: relative;
+  font-style: cormorant;
+}
+
+.logo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: initial;
+  animation: fadeIn 5s;
+}
+
+.quote {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 4rem;
+  left: 4rem;
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.bold {
+  display: flex;
+  justify-content: center;
+  color: var(--dark);
+  margin-left: 0.5rem;
+  font-size: 4rem;
+  transform: translateY(10.5px);
+  font-weight: 700;
+}
+
+@keyframes fadeAway {
+  0%   { background-color: var(--dark); }
+  40%   { background-color: var(--dark); }
+  100% { background-color: var(--light); }
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0}
+  55% {opacity: 0}
+  100% {opacity: 1}
+}

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;700&display=swap');
+
+:root {
+  --dark: #1E1E1E;
+  --light: #F8F8F8;
+  --accent: #696B22; 
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Cormorant SC', serif;
+  background: var(--light);
+}
+
+main {
+  margin: 0 3rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+} */
+
