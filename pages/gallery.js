@@ -15,7 +15,7 @@ const Gallery = ({ images }) => {
 
       <ul className={styles.ul}>
         <div className={styles.grid}>
-          {images.map((image) => {
+          {images && images.map((image) => {
             return (
               <li key={image.id}>
                 <a href={image.link} rel="noreferrer">
@@ -53,9 +53,11 @@ export async function getStaticProps() {
     }
   ).then((r) => r.json());
 
+  let images;
+
   if (results !== undefined) {
     const { resources } = results;
-    const images = resources.map((resource) => {
+    images = resources.map((resource) => {
       const { width, height } = resource;
       return {
         id: resource.asset_id,
@@ -65,10 +67,10 @@ export async function getStaticProps() {
         height,
       };
     });
-    return {
-      props: { images },
-    };
   }
+  return {
+    props: { images },
+  };
 }
 
 export default Gallery;
