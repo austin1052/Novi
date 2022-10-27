@@ -35,7 +35,9 @@ const Navbar = () => {
         </div>
         <div className={styles.cart}>
           <Link href='/cart'>
-            <FaShoppingCart title="Cart" className={styles.cartIcon} />
+            <a>
+              <FaShoppingCart title="Cart" className={styles.cartIcon} />
+            </a>
           </Link>
         </div>
       </nav>

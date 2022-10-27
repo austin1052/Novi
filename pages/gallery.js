@@ -7,7 +7,7 @@ const Gallery = ({ images }) => {
   return (
     <>
       <Head>
-        <title>My Images</title>
+        <title>Gallery</title>
         <meta name="description" content="All of my cool images." />
       </Head>
 
@@ -52,21 +52,23 @@ export async function getStaticProps() {
       },
     }
   ).then((r) => r.json());
-  const { resources } = results;
-  const images = resources.map((resource) => {
-    const { width, height } = resource;
-    return {
-      id: resource.asset_id,
-      title: resource.public_id,
-      image: resource.secure_url,
-      width,
-      height,
-    };
-  });
 
-  return {
-    props: { images },
-  };
+  if (results !== undefined) {
+    const { resources } = results;
+    const images = resources.map((resource) => {
+      const { width, height } = resource;
+      return {
+        id: resource.asset_id,
+        title: resource.public_id,
+        image: resource.secure_url,
+        width,
+        height,
+      };
+    });
+    return {
+      props: { images },
+    };
+  }
 }
 
 export default Gallery;
