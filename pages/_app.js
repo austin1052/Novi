@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     width > 1024 ? setMobileDisplay(false) : setMobileDisplay(true);
-    console.log("width change")
+    // console.log("width change")
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Layout>
-      <Component {...pageProps} />
+      <Component {...pageProps} width={width} />
     </Layout>
   )
 }

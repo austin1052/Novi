@@ -1,82 +1,46 @@
+import { useState, useEffect } from 'react';
 import Head from "next/head";
 import Image from "next/future/image";
+import Column from '../components/column'
+import { fetchImages, findColumnWidth, createColumnGroups } from '../lib/fetchImages';
 import styles from "../styles/Gallery.module.css";
 
-const Gallery = ({ images }) => {
-  // console.log("images", images);
+export default function Gallery({ images, width }) {
+  const [columnGroups, setColumnGroups] = useState(undefined);
+
+  //css for gap between rows and columns is set using this
+  const imageGap = 16;
+
+  useEffect(() => {
+    let columns = createColumnGroups(images, imageGap);
+    setColumnGroups(columns)
+  }, [images, width])
+
   return (
     <>
       <Head>
-        <title>Gallery</title>
+        <title>Novi - Art Gallery</title>
         <meta name="description" content="All of my cool images." />
       </Head>
-
-      <h1>Gallery</h1>
-
-      <ul className={styles.ul}>
-        <div className={styles.grid}>
-          {images && images.map((image) => {
+      <div className={styles.group} style={{ gap: imageGap }}>
+        {
+          columnGroups && Object.keys(columnGroups).map((group) => {
+            console.log(columnGroups[group])
             return (
-              <li key={image.id}>
-                <a href={image.link} rel="noreferrer">
-                  <div className={styles.imageContainer}>
-                    <Image
-                      className={styles.image}
-                      width="0"
-                      height="0"
-                      sizes="100vw"
-                      src={image.image}
-                      alt=""
-                    />
-                  </div>
-                </a>
-              </li>
-            );
-          })}
-        </div>
-      </ul>
+              <Column key={group.image} group={columnGroups[group]} width={width} imageGap={imageGap} />
+            )
+          })
+        }
+      </div>
     </>
-  );
+  )
 };
 
-// move fetch to lib
-
 export async function getStaticProps() {
-  const results = await fetch(
-    `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUD_NAME}/resources/image`,
-    {
-      headers: {
-        Authorization: `Basic ${Buffer.from(
-          process.env.NEXT_PUBLIC_CLOUD_KEY + ":" + process.env.CLOUD_SECRET_KEY
-        ).toString("base64")}`,
-      },
-    }
-  ).then((r) => r.json());
-
-  let images;
-
-  if (results !== undefined) {
-    const { resources } = results;
-    images = resources.map((resource) => {
-      const { width, height } = resource;
-      return {
-        id: resource.asset_id,
-        title: resource.public_id,
-        image: resource.secure_url,
-        width,
-        height,
-      };
-    });
-  }
+  const images = await fetchImages();
+  // const newImages = createColumns(images);
+  // console.log(newImages);
   return {
     props: { images },
   };
 }
-
-export default Gallery;
-
-// get images from gallery folder
-// display on page
-// ideally no pagination, just show all images (~20)
-// click on image to go to painting information page
-// only paintings marked as available will have an add to cart button

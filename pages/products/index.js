@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 
-const ImagePage = () => {
+function ImagePage() {
   const handleOnSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;

@@ -1,13 +1,8 @@
-/* .logo {
-  height: 450px;
-} */
-
 .nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* margin-top: 1rem; */
   margin-bottom: 1rem;
   margin-left: 3rem;
   margin-right: 3rem;
@@ -16,7 +11,6 @@
   color: var(--dark);
   font-size: 1.5rem;
   border-bottom: 1px solid var(--dark);
-  /* border-top: 1px solid var(--dark); */
 }
 
 .navList {
@@ -51,6 +45,7 @@
   align-items: center;
   flex-grow: 1;
   flex-basis: 0;
+  transform: translateY(4px);
 }
 
 .cartIcon {

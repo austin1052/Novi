@@ -4,7 +4,7 @@ import logo from '../public/logo.png'
 import styles from "../styles/Navbar.module.css";
 import { FaShoppingCart } from "react-icons/fa";
 
-const Navbar = () => {
+export default function Navbar() {
   return (
     <>
       <nav className={styles.nav}>
@@ -25,14 +25,16 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <div className={styles.navLogo}>
-          <Image src={logo}
-            width='100px'
-            height='100%'
-            objectFit='contain'
-            alt="novi art logo"
-          />
-        </div>
+        <Link href="/">
+          <div className={styles.navLogo}>
+            <Image src={logo}
+              width='100px'
+              height='100%'
+              objectFit='contain'
+              alt="novi art logo"
+            />
+          </div>
+        </Link>
         <div className={styles.cart}>
           <Link href='/cart'>
             <a>
@@ -44,5 +46,3 @@ const Navbar = () => {
     </>
   );
 };
-
-export default Navbar;
