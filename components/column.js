@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import Image from "next/future/image";
-import { findColumnWidth } from '../lib/fetchImages';
+import { findColumnWidth } from '../lib/utils';
 
 import styles from "../styles/Gallery.module.css";
 
-export default function Column({ group, width, imageGap }) {
+export default function ImageColumn({ group, width, imageGap }) {
   const [columnWidth, setColumnWidth] = useState(300);
 
   useEffect(() => {
@@ -22,6 +22,8 @@ export default function Column({ group, width, imageGap }) {
                   <Image
                     className={styles.image}
                     fill
+                    sizes="(max-width: 768px) 100vw,
+                          (max-width: 1200px) 50vw"
                     src={image.image}
                     alt=""
                   />

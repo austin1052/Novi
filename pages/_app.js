@@ -3,27 +3,24 @@ import Layout from '../components/layout'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-
   const [width, setWidth] = useState(undefined);
-  const [mobileDisplay, setMobileDisplay] = useState(true)
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
     setWidth(window.innerWidth)
-    console.log("set width")
   }, []);
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
-    width > 1024 ? setMobileDisplay(false) : setMobileDisplay(true);
-    // console.log("width change")
+    width > 1024 ? setIsMobile(false) : setIsMobile(true);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [width]);
 
   return (
-    <Layout>
+    <Layout isMobile={isMobile}>
       <Component {...pageProps} width={width} />
     </Layout>
   )

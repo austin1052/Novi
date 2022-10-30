@@ -4,7 +4,7 @@ import logo from '../public/logo.png'
 import styles from "../styles/Navbar.module.css";
 import { FaShoppingCart } from "react-icons/fa";
 
-export default function Navbar() {
+export default function Navbar({ isMobile }) {
   return (
     <>
       <nav className={styles.nav}>
