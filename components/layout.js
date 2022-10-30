@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Navbar from './navbar'
 import { useRouter } from "next/router";
 // import Footer from './footer'
