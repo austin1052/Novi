@@ -15,7 +15,6 @@ export default function Gallery({ images, width }) {
   useEffect(() => {
     let columns = createColumnGroups(images, imageGap);
     setColumnGroups(columns)
-    console.log(this);
   }, [images, width])
 
   return (
@@ -37,7 +36,7 @@ export default function Gallery({ images, width }) {
   )
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const images = await fetchImages();
   return {
     props: { images },
