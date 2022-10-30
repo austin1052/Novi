@@ -6,6 +6,7 @@ import { fetchImages, findColumnWidth, createColumnGroups } from '../lib/utils';
 import styles from "../styles/Gallery.module.css";
 
 export default function Gallery({ images, width }) {
+  console.log(images);
   const [columnGroups, setColumnGroups] = useState(undefined);
 
   //css for gap between rows and columns is set using this
