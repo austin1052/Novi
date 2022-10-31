@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
 import Head from "next/head";
 import ImageColumn from '../components/column'
-import { fetchImages, findColumnWidth, createColumnGroups } from '../lib/utils';
+import { fetchImages, createColumnGroups } from '../lib/utils';
 import styles from "../styles/Gallery.module.css";
 
 export default function Gallery({ images, width }) {
   const [columnGroups, setColumnGroups] = useState(undefined);
+  const [columnWidth, setColumnWidth] = useState(300);
 
   //css for gap between rows and columns is set using this
-  const imageGap = 16;
+  const imageGap = 12;
   const minImageWidth = 300;
 
   useEffect(() => {
-    let columns = createColumnGroups(images, imageGap);
-    setColumnGroups(columns)
+    let { columnGroups, columnWidth } = createColumnGroups(images, imageGap);
+    setColumnGroups(columnGroups)
+    setColumnWidth(columnWidth)
   }, [images, width])
 
   return (
@@ -26,7 +28,7 @@ export default function Gallery({ images, width }) {
         {
           columnGroups && Object.keys(columnGroups).map((group, i) => {
             return (
-              <ImageColumn key={i} group={columnGroups[group]} width={width} imageGap={imageGap} />
+              <ImageColumn key={i} group={columnGroups[group]} imageGap={imageGap} columnWidth={columnWidth} />
             )
           })
         }
