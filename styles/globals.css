@@ -35,6 +35,10 @@ a {
   text-decoration: none;
 }
 
+.hamburger-react {
+  color: var(--accent);
+}
+
 @media only screen and (min-width: 1024px) {
   main {
     margin-left: 48px;

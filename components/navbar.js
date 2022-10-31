@@ -4,7 +4,7 @@ import Image from 'next/image'
 import logo from '../public/logo.png'
 import styles from "../styles/Navbar.module.css";
 import { FaShoppingCart } from "react-icons/fa";
-import { Squash as Hamburger } from "hamburger-react";
+import { Twirl as Hamburger } from "hamburger-react";
 
 export default function Navbar({ isMobile }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +59,8 @@ export default function Navbar({ isMobile }) {
             <Hamburger
               toggled={isOpen}
               toggle={setIsOpen}
-              className="menu-bars"
+              // className={styles.hamburgerMenu}
+              label="Show Menu"
             />
             :
             <div className={styles.cart}>
