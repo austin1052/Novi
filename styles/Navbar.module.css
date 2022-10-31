@@ -1,46 +1,50 @@
-.nav {
+.header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  margin-left: 8px;
+  margin-right: 8px;
+  height: 70px;
 }
 
-.navList {
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 2rem;
+  background: var(--light);
+  position: fixed;
+  right: -100%;
+  top: 60px;
+  z-index: 10;
+  width: 70%;
+  height: 100%;
+}
+
+.nav.active {
+  position: absolute;
+  right: 0;
+}
+
+.navLinks {
   list-style-type: none;
 }
 
-.navList > li:first-of-type {
-
-}
-
-.navList > li {
-  border: 2px solid blue;
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-.navList > li:hover {
-
-}
-
-
-.cart {
-
-}
-
-.cartIcon {
-  display: none;
-}
-
-.cartIcon:hover {
-
+.navLinks > li {
+  padding: 1rem;
+  font-size: 1.8rem;
 }
 
 .navLogo {
+  /* logo width set inside navbar.js */
   order: -1;
+  margin-top: -16px;
+  margin-bottom: 16px;
+  height: 80px;
 }
 
-@media only screen and (min-width: 768px) {
-  .nav {
+@media only screen and (min-width: 1024px) {
+  .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -53,20 +57,32 @@
     font-size: 1.5rem;
     border-bottom: 1px solid var(--dark);
   }
-  
-  .navList {
-    list-style-type: none;
+
+  .nav {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
-     flex-basis: 0;
+    flex-basis: 0;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
   }
   
-  .navList > li:first-of-type {
+  .navLinks {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .navLinks > li:first-of-type {
     margin-left: 0;
   }
   
-  .navList > li {
+  .navLinks > li {
     margin-left: 2rem;
     text-transform: lowercase;
     padding: 0 5px 2px;
@@ -75,10 +91,9 @@
     transition: border 300ms;
   }
   
-  .navList > li:hover {
+  .navLinks > li:hover {
     border: 1px solid var(--accent);
   }
-  
   
   .cart {
     display: flex;
@@ -105,6 +120,7 @@
     order: 0;
     display: flex;
     justify-self: center;
-    transform: translateY(-4px);
+    margin-top: 0;
+    margin-bottom: 6px;
     }
 }
