@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import Layout from '../components/layout'
-import '../styles/globals.css'
+import Head from 'next/head';
+import Layout from '../components/layout';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   const [width, setWidth] = useState(undefined);
@@ -18,6 +19,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Layout isMobile={isMobile}>
+      <Head>
+        <meta name="theme-color" content="#696B22" />
+      </Head>
       <Component {...pageProps} width={width} isMobile={isMobile} />
     </Layout>
   )

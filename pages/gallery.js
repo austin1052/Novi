@@ -23,7 +23,6 @@ export default function Gallery({ images, width, isMobile }) {
       <Head>
         <title>Novi - Art Gallery</title>
         <meta name="description" content="All of my cool images." />
-        <meta name="theme-color" content="#696B22" />
       </Head>
       <div className={styles.group} style={{ marginRight: imageGap }}>
         {
