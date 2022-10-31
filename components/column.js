@@ -1,18 +1,13 @@
-import { useState, useEffect } from 'react';
 import Image from "next/future/image";
-// import { findColumnWidth } from '../lib/utils';
 
 import styles from "../styles/Gallery.module.css";
 
 export default function ImageColumn({ group, columnWidth, imageGap }) {
-
   return (
     <div className={styles.column} style={{ marginRight: imageGap }}>
       {
         group && group.map((image, i) => {
-          let { id, link, height, image: imageUrl, animationDelay } = image;
-          console.log(image);
-          // let delay = (i * 300) + "ms";
+          let { id, link, image: imageUrl, animationDelay } = image;
           return (
             <div key={id}>
               <a href={link} rel="noreferrer">
@@ -21,6 +16,8 @@ export default function ImageColumn({ group, columnWidth, imageGap }) {
                     className={styles.image}
                     fill
                     object-fit="contain"
+                    sizes="(max-width: 768px) 100vw,
+                          (max-width: 1200px) 50vw"
                     src={imageUrl}
                     alt=""
                   />

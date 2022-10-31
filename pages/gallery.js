@@ -4,19 +4,19 @@ import ImageColumn from '../components/column'
 import { fetchImages, createColumnGroups } from '../lib/utils';
 import styles from "../styles/Gallery.module.css";
 
-export default function Gallery({ images, width }) {
+export default function Gallery({ images, width, isMobile }) {
   const [columnGroups, setColumnGroups] = useState(undefined);
   const [columnWidth, setColumnWidth] = useState(300);
 
   //css for gap between rows and columns is set using this
-  const imageGap = 12;
+  const imageGap = isMobile ? 8 : 12;
   const minImageWidth = 300;
 
   useEffect(() => {
-    let { columnGroups, columnWidth } = createColumnGroups(images, imageGap);
+    let { columnGroups, columnWidth } = createColumnGroups(images, imageGap, isMobile);
     setColumnGroups(columnGroups)
     setColumnWidth(columnWidth)
-  }, [images, width])
+  }, [images, width, imageGap, isMobile])
 
   return (
     <>

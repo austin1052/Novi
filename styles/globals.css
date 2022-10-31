@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;700&display=swap');
+@import url("https://use.typekit.net/csi4xyp.css");
 
 :root {
   --dark: #1E1E1E;
@@ -18,13 +19,25 @@ body {
   background: var(--light);
 }
 
+h1 {
+  font-family: caprizant, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 main {
-  margin: 0 3rem;
+  margin: 0 8px;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+@media only screen and (min-width: 768px) {
+  main {
+    margin: 0 48px;
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {

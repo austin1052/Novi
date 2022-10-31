@@ -6,14 +6,15 @@ function MyApp({ Component, pageProps }) {
   const [width, setWidth] = useState(undefined);
   const [isMobile, setIsMobile] = useState(true);
 
-  useEffect(() => {
-    setWidth(window.innerWidth)
-  }, []);
+  // useEffect(() => {
+  //   setWidth(window.innerWidth)
+  // }, []);
 
   useEffect(() => {
+    setWidth(window.innerWidth)
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
-    width > 1024 ? setIsMobile(false) : setIsMobile(true);
+    width > 768 ? setIsMobile(false) : setIsMobile(true);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -21,7 +22,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Layout isMobile={isMobile}>
-      <Component {...pageProps} width={width} />
+      <Component {...pageProps} width={width} isMobile={isMobile} />
     </Layout>
   )
 }

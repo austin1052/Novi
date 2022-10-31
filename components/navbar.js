@@ -7,6 +7,9 @@ import { FaShoppingCart } from "react-icons/fa";
 export default function Navbar({ isMobile }) {
   return (
     <>
+      {/* {
+        isMobile ? <h1>mobile</h1> : <h1>desktop</h1>
+      } */}
       <nav className={styles.nav}>
         <ul className={styles.navList}>
           <li>
