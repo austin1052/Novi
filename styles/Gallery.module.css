@@ -1,9 +1,7 @@
 /* .container {
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; */
-  /* set gap with JS */
-  /* gap: 1rem; */
+  display: flex;
+  justify-content: space-between;
+} */
 
 
 .group {
@@ -15,20 +13,25 @@
 .column {
   display: flex;
   flex-direction: column;
+  /* margin-right: 1rem; */
   /* gap: 1rem; */
 }
 
+.column:last-of-type {
+  margin-right: 0;
+}
+
 .imageContainer {
-  /* set width with JS */
-  /* width: 364px; */
   display: flex;
-  flex-grow: 1;
+  margin-bottom: 1rem;
+   /* flex-grow: 1; */
+   /* height: unset; */
   position: relative;
 }
 
 .image {
   object-fit: contain;
   position: relative !important;
-  height: unset !important;
+  /* height: unset !important; */
 }
 

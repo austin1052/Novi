@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import Head from "next/head";
-import Image from "next/future/image";
 import ImageColumn from '../components/column'
 import { fetchImages, findColumnWidth, createColumnGroups } from '../lib/utils';
 import styles from "../styles/Gallery.module.css";
 
 export default function Gallery({ images, width }) {
-  console.log(images);
   const [columnGroups, setColumnGroups] = useState(undefined);
 
   //css for gap between rows and columns is set using this
@@ -24,7 +22,7 @@ export default function Gallery({ images, width }) {
         <title>Novi - Art Gallery</title>
         <meta name="description" content="All of my cool images." />
       </Head>
-      <div className={styles.group} style={{ gap: imageGap }}>
+      <div className={styles.group} style={{ marginRight: imageGap }}>
         {
           columnGroups && Object.keys(columnGroups).map((group, i) => {
             return (

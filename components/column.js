@@ -12,19 +12,19 @@ export default function ImageColumn({ group, width, imageGap }) {
   }, [width, imageGap])
 
   return (
-    <div className={styles.column} style={{ gap: imageGap }} >
+    <div className={styles.column} style={{ marginRight: imageGap }}>
       {
         group && group.map((image) => {
+          let { id, link, height, image: imageUrl } = image;
           return (
-            <div key={image.id}>
-              <a href={image.link} rel="noreferrer">
+            <div key={id}>
+              <a href={link} rel="noreferrer">
                 <div className={styles.imageContainer} style={{ width: columnWidth + "px" }}>
                   <Image
                     className={styles.image}
                     fill
-                    sizes="(max-width: 768px) 100vw,
-                          (max-width: 1200px) 50vw"
-                    src={image.image}
+                    object-fit="contain"
+                    src={imageUrl}
                     alt=""
                   />
                 </div>
